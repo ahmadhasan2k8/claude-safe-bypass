@@ -20,13 +20,7 @@ Network blocking (`curl`, `wget`) is included but **commented out** — uncommen
 
 ## Install
 
-### One-liner (copy into any project)
-
-```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/ahmadhasan2k8/claude-safe-bypass/main/install.sh)
-```
-
-### From a local clone
+### Quick setup
 
 ```bash
 git clone https://github.com/ahmadhasan2k8/claude-safe-bypass.git
@@ -34,9 +28,11 @@ cd claude-safe-bypass
 bash install.sh /path/to/your/project
 ```
 
+That's it. The installer copies the safety config into your project — no configuration needed.
+
 ### Manual
 
-Copy these into your project:
+Copy these into your project yourself:
 
 ```
 your-project/

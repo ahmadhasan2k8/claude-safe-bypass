@@ -1,36 +1,26 @@
 #!/usr/bin/env bash
-# ┌─────────────────────────────────────────────────────────────────────────────┐
-# │ claude-safe-bypass installer                                               │
-# │ Copies safety config into your project's .claude/ directory.               │
-# │                                                                            │
-# │ Usage:                                                                     │
-# │   curl -fsSL https://raw.githubusercontent.com/ahmadhasan2k8/claude-safe-bypass/main/install.sh | bash │
-# │   bash install.sh [target-dir]                                             │
-# └─────────────────────────────────────────────────────────────────────────────┘
+# ┌─────────────────────────────────────────────────────────────────┐
+# │ claude-safe-bypass installer                                   │
+# │ Copies safety config into your project's .claude/ directory.   │
+# │                                                                │
+# │ Usage:                                                         │
+# │   bash install.sh /path/to/your/project                       │
+# │   cd your-project && bash /path/to/install.sh                  │
+# └─────────────────────────────────────────────────────────────────┘
 
 set -euo pipefail
 
 TARGET="${1:-.}"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SRC="$SCRIPT_DIR/template"
 
-# ── Detect source: local clone vs. curl pipe ─────────────────────────────────
-
-if [ -d "$SCRIPT_DIR/template" ]; then
-  SRC="$SCRIPT_DIR/template"
-else
-  # Running via curl pipe — download template files
-  REPO="https://raw.githubusercontent.com/ahmadhasan2k8/claude-safe-bypass/main/template"
-  TMP=$(mktemp -d)
-  SRC="$TMP"
-  trap 'rm -rf "$TMP"' EXIT
-
-  mkdir -p "$SRC/.claude/hooks"
-  curl -fsSL "$REPO/.claude/settings.json"              -o "$SRC/.claude/settings.json"
-  curl -fsSL "$REPO/.claude/hooks/block-dangerous.sh"   -o "$SRC/.claude/hooks/block-dangerous.sh"
-  curl -fsSL "$REPO/CLAUDE.md"                          -o "$SRC/CLAUDE.md"
+if [ ! -d "$SRC" ]; then
+  echo "  Error: template/ directory not found." >&2
+  echo "  Run this script from the cloned repo." >&2
+  exit 1
 fi
 
-# ── Install ──────────────────────────────────────────────────────────────────
+# ── Install ──────────────────────────────────────────────────────
 
 mkdir -p "$TARGET/.claude/hooks"
 
