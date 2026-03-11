@@ -1,8 +1,10 @@
 # claude-safe-bypass
 
-Safety guardrails for Claude Code's `--dangerously-skip-permissions` mode.
+**Full speed. No permission prompts. No disasters.**
 
-Use bypass mode for speed without worrying about catastrophic mistakes. This project adds a **PreToolUse hook** that blocks destructive commands before they execute — even with all permissions bypassed.
+`--dangerously-skip-permissions` is fast — but one bad `rm -rf` or `git push --force` and you're done. This project gives you the speed of bypass mode with a safety net that actually works.
+
+Drop it into any project in 10 seconds. A **PreToolUse hook** intercepts every tool call before it executes — blocking destructive commands at the runtime level, where Claude can't override it. Even with all permissions bypassed.
 
 ## What it blocks
 
