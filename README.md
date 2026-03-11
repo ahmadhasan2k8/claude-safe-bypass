@@ -30,6 +30,9 @@ bash install.sh /path/to/your/project
 
 That's it. The installer copies the safety config into your project — no configuration needed.
 
+- If your project already has a `CLAUDE.md`, the safety rules are appended (not overwritten)
+- If the safety rules are already present, it skips — safe to run multiple times
+
 ### Manual
 
 Copy these into your project yourself:
