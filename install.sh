@@ -28,10 +28,16 @@ cp "$SRC/.claude/settings.json"            "$TARGET/.claude/settings.json"
 cp "$SRC/.claude/hooks/block-dangerous.sh" "$TARGET/.claude/hooks/block-dangerous.sh"
 chmod +x "$TARGET/.claude/hooks/block-dangerous.sh"
 
+MARKER="# Safety Rules"
+
 if [ -f "$TARGET/CLAUDE.md" ]; then
-  printf '\n' >> "$TARGET/CLAUDE.md"
-  cat "$SRC/CLAUDE.md" >> "$TARGET/CLAUDE.md"
-  echo "  Appended safety rules to existing CLAUDE.md"
+  if grep -qF "$MARKER" "$TARGET/CLAUDE.md"; then
+    echo "  CLAUDE.md already contains safety rules — skipped"
+  else
+    printf '\n' >> "$TARGET/CLAUDE.md"
+    cat "$SRC/CLAUDE.md" >> "$TARGET/CLAUDE.md"
+    echo "  Appended safety rules to existing CLAUDE.md"
+  fi
 else
   cp "$SRC/CLAUDE.md" "$TARGET/CLAUDE.md"
   echo "  Created CLAUDE.md with safety rules"
