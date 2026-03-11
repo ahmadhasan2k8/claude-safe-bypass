@@ -4,7 +4,7 @@
 # │ Copies safety config into your project's .claude/ directory.               │
 # │                                                                            │
 # │ Usage:                                                                     │
-# │   curl -fsSL https://raw.githubusercontent.com/USER/claude-safe-bypass/main/install.sh | bash │
+# │   curl -fsSL https://raw.githubusercontent.com/ahmadhasan2k8/claude-safe-bypass/main/install.sh | bash │
 # │   bash install.sh [target-dir]                                             │
 # └─────────────────────────────────────────────────────────────────────────────┘
 
@@ -19,7 +19,7 @@ if [ -d "$SCRIPT_DIR/template" ]; then
   SRC="$SCRIPT_DIR/template"
 else
   # Running via curl pipe — download template files
-  REPO="https://raw.githubusercontent.com/USER/claude-safe-bypass/main/template"
+  REPO="https://raw.githubusercontent.com/ahmadhasan2k8/claude-safe-bypass/main/template"
   TMP=$(mktemp -d)
   SRC="$TMP"
   trap 'rm -rf "$TMP"' EXIT

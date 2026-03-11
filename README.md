@@ -23,15 +23,13 @@ Network blocking (`curl`, `wget`) is included but **commented out** — uncommen
 ### One-liner (copy into any project)
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/USER/claude-safe-bypass/main/install.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/ahmadhasan2k8/claude-safe-bypass/main/install.sh)
 ```
-
-> Replace `USER` with the actual GitHub username in the URL after forking/cloning.
 
 ### From a local clone
 
 ```bash
-git clone https://github.com/USER/claude-safe-bypass.git
+git clone https://github.com/ahmadhasan2k8/claude-safe-bypass.git
 cd claude-safe-bypass
 bash install.sh /path/to/your/project
 ```
